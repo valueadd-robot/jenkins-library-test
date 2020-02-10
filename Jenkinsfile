@@ -77,27 +77,9 @@ node() {
         email                      : lib.Constants.DEFAULT_GITHUB_ROBOT_EMAIL,
         usernamePasswordCredential : lib.Constants.DEFAULT_GITHUB_ROBOT_CREDENTIAL,
       ],
-      artifactory: [
-        url                        : lib.Constants.DEFAULT_ARTIFACTORY_URL,
-        usernamePasswordCredential : lib.Constants.DEFAULT_ARTIFACTORY_ROBOT_CREDENTIAL,
-      ],
-      pax: [
-        sshHost                    : lib.Constants.DEFAULT_PAX_PACKAGING_SSH_HOST,
-        sshPort                    : lib.Constants.DEFAULT_PAX_PACKAGING_SSH_PORT,
-        sshCredential              : lib.Constants.DEFAULT_PAX_PACKAGING_SSH_CREDENTIAL,
-        remoteWorkspace            : lib.Constants.DEFAULT_PAX_PACKAGING_REMOTE_WORKSPACE,
-      ],
-      installRegistries: [
-        [
-          email                      : lib.Constants.DEFAULT_NPM_PRIVATE_REGISTRY_EMAIL,
-          usernamePasswordCredential : lib.Constants.DEFAULT_NPM_PRIVATE_REGISTRY_CREDENTIAL,
-          registry                   : lib.Constants.DEFAULT_NPM_PRIVATE_REGISTRY_INSTALL,
-          scope                      : 'zowe',
-        ]
-      ],
       publishRegistry: [
-        email                      : lib.Constants.DEFAULT_NPM_PRIVATE_REGISTRY_EMAIL,
-        usernamePasswordCredential : lib.Constants.DEFAULT_NPM_PRIVATE_REGISTRY_CREDENTIAL,
+        email                      : lib.Constants.DEFAULT_NPM_REGISTRY_EMAIL,
+        usernamePasswordCredential : lib.Constants.DEFAULT_NPM_REGISTRY_CREDENTIAL,
       ]
     )
 
@@ -130,14 +112,12 @@ node() {
     )
 
     // default packaging operation
-    pipeline.packaging(name: 'jenkins-library-test')
+//    pipeline.packaging(name: 'jenkins-library-test')
 
     // define we need publish stage
     pipeline.publish(
-        allowPublishPreReleaseFromFormalReleaseBranch: true,
-        artifacts: [
-            '.pax/jenkins-library-test.pax'
-        ]
+            allowPublishPreReleaseFromFormalReleaseBranch: true,
+            access: 'public'
     )
 
     // define we need release stage
