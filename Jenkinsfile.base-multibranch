@@ -67,8 +67,6 @@ node() {
      */
     pipeline.addBuildParameters(customParameters)
 
-    pipeline.admins.add("admin")
-
     pipeline.setup()
 
     pipeline.createStage(

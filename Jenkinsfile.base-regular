@@ -26,8 +26,6 @@ node() {
 
     def pipeline = lib.pipelines.base.Pipeline.new(this)
 
-    pipeline.admins.add("admin")
-
     pipeline.setup()
 
     pipeline.createStage(
