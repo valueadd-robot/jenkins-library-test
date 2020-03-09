@@ -62,7 +62,7 @@ node() {
 
     def pipeline = lib.pipelines.base.Pipeline.new(this)
 
-    def changeInformation = lib.pipelines.generic.models.ChangeInformation.new()
+    def changeInformation = lib.pipelines.generic.models.ChangeInformation.new(this)
     changeInformation.isPullRequest = false
     pipeline.changeInformation = changeInformation
 
