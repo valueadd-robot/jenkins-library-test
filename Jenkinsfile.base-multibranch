@@ -47,7 +47,7 @@ node() {
      *
      * def lib = library("jenkins-library").org.valueadd.jenkins_library
      */
-    def branch = 'master'
+    def branch = feature/configure_ci_and_unit_tests'
 
     if (params.LIBRARY_BRANCH) {
         branch = params.LIBRARY_BRANCH
@@ -56,8 +56,6 @@ node() {
     } else if (env.BRANCH_NAME) {
         branch = env.BRANCH_NAME
     }
-
-    branch = 'feature/configure_ci_and_unit_tests'
 
     echo "Jenkins library branch $branch will be used to build."
     def lib = library("jenkins-library@$branch").org.valueadd.jenkins_library
