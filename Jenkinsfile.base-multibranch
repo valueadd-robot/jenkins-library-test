@@ -57,7 +57,7 @@ node() {
         branch = env.BRANCH_NAME
     }
 
-    branch = 'configure_ci_and_unit_tests'
+    branch = 'feature/configure_ci_and_unit_tests'
 
     echo "Jenkins library branch $branch will be used to build."
     def lib = library("jenkins-library@$branch").org.valueadd.jenkins_library
