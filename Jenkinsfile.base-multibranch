@@ -51,7 +51,7 @@ node() {
     def branch = 'configure_ci_and_unit_tests'
 
     echo "Jenkins library branch $branch will be used to build."
-    def lib = library("jenkins-library@$branch").org.valueadd.jenkins_library
+    def lib = library("jenkins-library@configure_ci_and_unit_tests").org.valueadd.jenkins_library
 
     def pipeline = lib.pipelines.base.Pipeline.new(this)
 
