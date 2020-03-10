@@ -47,11 +47,18 @@ node() {
      *
      * def lib = library("jenkins-library").org.valueadd.jenkins_library
      */
-    //def branch = 'master'
-    def branch = 'configure_ci_and_unit_tests'
+    def branch = 'master'
+
+    if (params.LIBRARY_BRANCH) {
+        branch = params.LIBRARY_BRANCH
+    } else if (env.CHANGE_BRANCH) {
+        branch = env.CHANGE_BRANCH
+    } else if (env.BRANCH_NAME) {
+        branch = env.BRANCH_NAME
+    }
 
     echo "Jenkins library branch $branch will be used to build."
-    def lib = library("jenkins-library@configure_ci_and_unit_tests").org.valueadd.jenkins_library
+    def lib = library("jenkins-library@$branch").org.valueadd.jenkins_library
 
     def pipeline = lib.pipelines.base.Pipeline.new(this)
 
