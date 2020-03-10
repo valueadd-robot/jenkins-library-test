@@ -22,7 +22,7 @@ customParameters.push(booleanParam(
 customParameters.push(string(
   name: 'LIBRARY_BRANCH',
   description: 'Jenkins library branch to test',
-  defaultValue: 'configure_ci_and_unit_tests',
+  defaultValue: '',
   trim: true
 ))
 opts.push(parameters(customParameters))
@@ -47,15 +47,8 @@ node() {
      *
      * def lib = library("jenkins-library").org.valueadd.jenkins_library
      */
-    def branch = 'master'
-
-    if (params.LIBRARY_BRANCH) {
-        branch = params.LIBRARY_BRANCH
-    } else if (env.CHANGE_BRANCH) {
-        branch = env.CHANGE_BRANCH
-    } else if (env.BRANCH_NAME) {
-        branch = env.BRANCH_NAME
-    }
+    //def branch = 'master'
+    def branch = 'configure_ci_and_unit_tests'
 
     echo "Jenkins library branch $branch will be used to build."
     def lib = library("jenkins-library@$branch").org.valueadd.jenkins_library
