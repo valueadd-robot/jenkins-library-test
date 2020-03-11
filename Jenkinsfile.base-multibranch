@@ -49,6 +49,10 @@ node() {
      */
     def branch = 'master'
 
+    echo "params.LIBRARY_BRANCH ${params.LIBRARY_BRANCH}"
+    echo "params.CHANGE_BRANCH ${params.CHANGE_BRANCH}"
+    echo "params.BRANCH_NAME ${params.BRANCH_NAME}"
+
     if (params.LIBRARY_BRANCH) {
         branch = params.LIBRARY_BRANCH
     } else if (env.CHANGE_BRANCH) {
